@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+  <span>Расписание</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon">Выход</button>
+  <mat-icon>faworite</mat-icon>
+  <mat-icon>exit_to_app</mat-icon>
+</mat-toolbar>
+
+<h1 style="text-align: center">Номер недели: {{numberWeak}}</h1>
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8" >
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef > {{columnsForDisplay[columnsToDisplay.indexOf(column)]}} </th>
+    <td mat-cell *matCellDef="let element" ><a *ngIf="columnsToDisplay.indexOf(column) == 0; else unset" [routerLink]="['/disciplineStudent']"> {{element[column]}}</a>
+      <ng-template #unset>
+        {{element[column]}}
+      </ng-template>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+     <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+       <!-- <div class="example-element-diagram">
+         <div class="example-element-name"> {{element.name}} </div>
+         <div class="example-element-position"> {{element.position}} </div>
+         <div class="example-element-weak"> {{element.weak}} </div>
+         <div class="example-element-teacher"> {{element.teacher}} </div>
+         <div class="example-element-auditoria"> {{element.auditoria}} </div>
+         <div class="example-element-formOcenki"> {{element.formOcenki}} </div>
+       </div>-->
+       <div class="example-element-description">
+         {{element.description}}
+         <span class="example-element-description-attribution"> -- Wikipedia </span>
+       </div>
+     </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>

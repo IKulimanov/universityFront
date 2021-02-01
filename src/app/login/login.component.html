@@ -1,0 +1,40 @@
+
+<body>
+<mat-card>
+  <mat-card-title>Вход</mat-card-title>
+  <mat-card-content>
+    <form #f="ngForm" class="container">
+      <div>
+        <mat-form-field>
+          <label>
+            <input matInput name="login"
+                   placeholder="Логин"
+                   type="text"
+                   [(ngModel)]="login">
+          </label>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <label>
+            <input matInput name="password"
+                   type="password"
+                   placeholder="Пароль"
+                   [(ngModel)]="password">
+          </label>
+        </mat-form-field>
+      </div>
+
+      <div class = "button">
+        <button class = "md-cust-btn-reg"
+                mat-button type = "submit" routerLink="/registration">Регистрация</button>
+
+        <button class = "md-cust-btn"  mat-raised-button type='button'
+                color="primary" (click)="doLogin()" > Вход </button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
+</body>

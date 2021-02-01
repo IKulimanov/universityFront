@@ -1,0 +1,71 @@
+<mat-toolbar color="primary">
+  <span>Консоль админа</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon">Выход</button>
+  <mat-icon>faworite</mat-icon>
+  <mat-icon>exit_to_app</mat-icon>
+</mat-toolbar>
+
+<h1 style="text-align: center">Номер недели: {{numberWeak}}</h1>
+<p>
+  <!--Option selected: {{groups.selectedOptions.selected[0]?.value}}-->
+</p>
+
+<div class="admin-panel" style="display: flex">
+  <div style="flex: 1 1 10%">
+  <mat-selection-list #groups [multiple]="false">
+    <mat-list-option *ngFor="let group of typegroups" [value]="group">
+      {{group}}
+    </mat-list-option>
+  </mat-selection-list>
+  </div>
+  <div style="flex: 1 1 auto">
+  <table mat-table
+         [dataSource]="dataSource" multiTemplateDataRows
+         class="mat-elevation-z8">
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+      <th mat-header-cell *matHeaderCellDef > {{columnsForDisplay[columnsToDisplay.indexOf(column)]}} </th>
+      <td mat-cell *matCellDef="let element" > {{element[column]}}
+      </td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="example-element-description">
+            {{element.description}}
+            <button mat-raised-button color="accent">
+              Внести изменения
+            </button>
+            <button mat-raised-button color="primary">
+              Отмена
+            </button>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>
+    <button mat-raised-button color="accent" (click)="openDialog()">
+      Добавить предмет
+    </button>
+  </div>
+ <!-- <div class="listStudents" style="border: 1px solid black; flex: 1 1 auto" >
+  <p>Список студентов группы</p>
+    <mat-list role="list">
+      <mat-list-item *ngFor="let student of typestudents"  role="listitem">{{student}}</mat-list-item>
+    </mat-list>
+  </div>
+</div>
+-->
+
+

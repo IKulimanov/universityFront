@@ -1,0 +1,36 @@
+  <div style="text-align: center">
+<div>
+   <mat-form-field>
+            <input matInput required name="login"
+                   placeholder="ФИО"
+                   type="text"
+                   [(ngModel)]="login" >
+   </mat-form-field>
+</div>
+    <div>
+     <mat-form-field>
+      <input matInput name="firstname"
+              placeholder="Номер студенческого"
+              type="text"
+              [(ngModel)]="firstname" >
+     </mat-form-field>
+      </div>
+    <div>
+     <mat-form-field>
+       <input matInput required name="email"
+              type="email"
+              placeholder="e-mail"
+              [(ngModel)]="email">
+     </mat-form-field>
+      </div>
+    <div>
+    <mat-form-field>
+      <input matInput required #x type="password" placeholder="Пароль"  [(ngModel)]="password"></mat-form-field>
+      </div>
+      <form #f="ngForm" class="container">
+          <div class = "button">
+            <button class = "md-cust-btn"  mat-raised-button type='button'
+                    color="primary" (click)="doReg()"> Зарегестрироваться </button>
+          </div>
+        </form>
+</div>

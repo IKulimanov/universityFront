@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  <span>Расписание</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon">Выход</button>
+  <mat-icon>faworite</mat-icon>
+  <mat-icon>exit_to_app</mat-icon>
+</mat-toolbar>
+<h1 style="text-align: center">Номер недели: {{numberWeak}}</h1>
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef > {{columnsForDisplay[columnsToDisplay.indexOf(column)]}} </th>
+    <td mat-cell *matCellDef="let element" ><a *ngIf="columnsToDisplay.indexOf(column) == 0; else unset" [routerLink]="['/disciplineTeacher']"> {{element[column]}}</a>
+      <ng-template #unset>
+        {{element[column]}}
+      </ng-template>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row">
+  </tr>
+</table>
+<div class="info" style="float: left">
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    Отправить заявку на изменение
+  </button>
+</div>
+<p *ngIf="edit">
+  Вы хотите: {{edit}}
+</p>

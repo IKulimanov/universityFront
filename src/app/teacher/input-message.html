@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Заявка на изменение</h1>
+<div mat-dialog-content>
+  <p>Напишите, что бы вы хотели изменить?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.edit">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.edit">Ok</button>
+</div>

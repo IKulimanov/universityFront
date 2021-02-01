@@ -1,0 +1,71 @@
+
+<h1 mat-dialog-title>Заявка на изменение</h1>
+<div mat-dialog-content>
+  <mat-form-field style="margin-right: 20px" appearance="fill">
+    <mat-label>Название предмета</mat-label>
+    <input matInput required>
+
+    <!--<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+  </mat-form-field>
+  <mat-form-field style="margin-right: 20px" appearance="fill">
+    <mat-label>День недели</mat-label>
+    <mat-select>
+      <mat-option value="one">Понедельник</mat-option>
+      <mat-option value="two">Вторник</mat-option>
+      <mat-option value="three">Среда</mat-option>
+      <mat-option value="four">Четверг</mat-option>
+      <mat-option value="five">Пятница</mat-option>
+      <mat-option value="six">Суббота</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="margin-right: 20px" appearance="fill">
+    <mat-label>Тип занятий</mat-label>
+    <mat-select>
+      <mat-option value="one">Лекция</mat-option>
+      <mat-option value="two">Практика</mat-option>
+      <mat-option value="three">Лабораторная</mat-option>
+      <mat-option value="four">Семинар</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="margin-right: 20px" appearance="fill">
+    <mat-label>Номер пары</mat-label>
+    <mat-select>
+      <mat-option value="one">1</mat-option>
+      <mat-option value="two">2</mat-option>
+      <mat-option value="three">3</mat-option>
+      <mat-option value="four">4</mat-option>
+      <mat-option value="five">5</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="margin-right: 20px" appearance="fill">
+    <mat-label>Номер недели</mat-label>
+    <mat-select>
+      <mat-option value="one">Все</mat-option>
+      <mat-option value="two">Четные</mat-option>
+      <mat-option value="three">Нечетные</mat-option>
+      <mat-option value="three">1-12</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="margin-right: 20px" appearance="fill">
+    <mat-label>Преподаватель</mat-label>
+    <input matInput required>
+    <!--<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+  </mat-form-field>
+  <mat-form-field style="margin-right: 20px" appearance="fill">
+    <mat-label>Кабинет</mat-label>
+    <input matInput required>
+    <!--<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+  </mat-form-field>
+  <mat-form-field style="margin-right: 20px" appearance="fill">
+    <mat-label>Тип оценивания</mat-label>
+    <mat-select>
+      <mat-option value="one">Экзамен</mat-option>
+      <mat-option value="two">Зачет</mat-option>
+       </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="warn" (click)="onNoClick()">Отмена</button>
+  <button mat-button color="primary" [mat-dialog-close]="data.edit">Ок</button>
+</div>
